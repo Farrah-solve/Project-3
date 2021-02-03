@@ -1,14 +1,30 @@
 import React from 'react';
-import {} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navbar from './components/Navbar';
 
 
 
 function App() {
-  return <Navbar />
-  // Home
-  // Budget
-  // Notes
+  return (
+    <Router>
+      <Navbar />
+
+      <Route path='/'>
+      {/* // Home */}
+      </Route>
+
+      <Route path='budget'>
+      {/* // Budget */}
+      </Route>
+
+      <Route path='Notes'>
+      {/* // Notes */}
+      </Route>
+
+    </Router>
+  ) 
+  
+  
 }
 
 export default App;
