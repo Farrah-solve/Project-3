@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
 function Notes() {
@@ -6,6 +6,15 @@ function Notes() {
         title: '',
         content: ''
     })
+
+    useEffect(() => {
+        fetch("/notes").then(res => {
+            if(res.ok) {
+                return res.json()
+            }
+        }).then(jsonRes => setNotes(jsonRes));
+    })
+
     function handleChange(event) {
         const {name, value} = event.target;
 
@@ -39,7 +48,11 @@ function Notes() {
 
             <button onClick={handleClick} className='btn btn-lg btn-info'>ADD NOTE</button>
         </form>
+        {Notes.map(note => 
+            <h1>{note.title}</h1>)}
     </div>
 }
+
+
 
 export default Notes;
