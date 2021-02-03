@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
-function Budget() {
+
     function Budget() {
         const [input, setInput] = useState({
             transaction: ''
@@ -20,11 +20,13 @@ function Budget() {
     
         function handleClick(event) {
             event.preventDefault();
-            const newNote = {
-                title: input.title,
-                content: input.content
+            const newBudget = {
+                tName: input.title,
+                transaction: input.transaction,
+                tAmount: input.amount,
+                total: input.total
             }
-            axios.post('http://localhost:3001/notes', newNote)
+            axios.post('http://localhost:3001/notes', newBudget)
         }
 
 
@@ -35,19 +37,19 @@ function Budget() {
         <form>
         
             <div className='wrapper'>
-                <div class='total'>
-                <div class='total'>Your total is: $<span id='total'>0</span></div>
+                <div className='total'>
+                <div className='total'>Your total is: $<span id='total'>0</span></div>
                 </div>
 
-                <div class='form'>
-                <input type='text' id='t-name' placeholder='Name of transaction' />
-                <input type='number' min='0' id='t-amount' placeholder='Transaction amount' />
-                <button id='add-btn'><i class='fa fa-plus buttons'></i> Add Funds</button>
-                <button id='sub-btn'><i class='fa fa-minus'></i> Subtract Funds</button>
-                <p class='error'></p>
+                <div className='form'>
+                <input type='text' id='tName' placeholder='Name of transaction' />
+                <input type='number' min='0' id='tAmount' placeholder='Transaction amount' />
+                <button id='add-btn'><i className='fa fa-plus buttons'></i> Add Funds</button>
+                <button id='sub-btn'><i className='fa fa-minus'></i> Subtract Funds</button>
+                <p className='error'></p>
                 </div>
 
-                <div class='transactions'>
+                <div className='transactions'>
                 <table>
                     <thead>
                     <th>Transaction</th>

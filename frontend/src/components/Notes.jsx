@@ -12,7 +12,7 @@ function Notes() {
             if(res.ok) {
                 return res.json()
             }
-        }).then(jsonRes => setNotes(jsonRes));
+        }).then(jsonRes => Notes(jsonRes));
     })
 
     function handleChange(event) {
@@ -48,8 +48,14 @@ function Notes() {
 
             <button onClick={handleClick} className='btn btn-lg btn-info'>ADD NOTE</button>
         </form>
-        {Notes.map(note => 
-            <h1>{note.title}</h1>)}
+        {/* {Notes.map(note => 
+        <div>
+            <h1>{note.title}</h1>
+            <p>{note.content}</p>
+        </div>
+            )} */}
+
+
     </div>
 }
 

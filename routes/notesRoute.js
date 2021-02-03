@@ -11,6 +11,11 @@ router.route("/notes").post((req, res) => {
     });
 
     newNote.save();
-}}
+});
+
+router.route("/notes").get((req, res) => {
+    Notes.find()
+        .then(foundNotes => res.json(foundNotes))
+})
 
 module.exports = router;
