@@ -6,6 +6,7 @@ import Budget from './components/Budget';
 import Notes from './components/Notes';
 
 
+
 function App() {
   return (
     <Router>
