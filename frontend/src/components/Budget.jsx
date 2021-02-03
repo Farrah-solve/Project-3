@@ -1,11 +1,40 @@
 import React from 'react';
+import axios from 'axios';
 
 function Budget() {
+    function Budget() {
+        const [input, setInput] = useState({
+            transaction: ''
+        
+        })
+        function handleChange(event) {
+            const {name, value} = event.target;
+    
+            setInput(prevInput => {
+                return {
+                    ...prevInput,
+                    [name]: value
+                }
+            })
+        }
+    
+        function handleClick(event) {
+            event.preventDefault();
+            const newNote = {
+                title: input.title,
+                content: input.content
+            }
+            axios.post('http://localhost:3001/notes', newNote)
+        }
+
+
+
+
     return <div className='container'>
         <h1>Track your budget here</h1>
         <form>
         
-            <div class='wrapper'>
+            <div className='wrapper'>
                 <div class='total'>
                 <div class='total'>Your total is: $<span id='total'>0</span></div>
                 </div>
