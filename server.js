@@ -19,6 +19,7 @@ mongoose.connect(
   );
 
 // require route
+app.use("/", require("./routes/budgetRoute"));
 
 app.listen(3001, function() {
     console.log("express server is running on port 3001");
